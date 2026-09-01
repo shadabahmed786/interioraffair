@@ -1,0 +1,6 @@
+{
+  "name": "Nora Interiors",
+  "description": "Premium digital interior studio and furniture showroom crafted in Pakistan. Don't shop for furniture. Design your space.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

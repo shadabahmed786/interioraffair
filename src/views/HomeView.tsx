@@ -1,0 +1,950 @@
+import React, { useState } from 'react';
+import {
+  ArrowRight,
+  Sparkles,
+  Check,
+  ChevronDown,
+  ChevronUp,
+  MapPin
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { ActivePage, Project } from '../types';
+import { SERVICES_LIST, PROCESS_STEPS, MATERIALS_CURATED_LIST } from '../data/services';
+import { SPACES_LIST } from '../data/spaces';
+import { PROJECTS } from '../data/projects';
+import { FAQ_LIST } from '../data/faq';
+import { BeforeAfterSlider } from '../components/BeforeAfterSlider';
+
+interface HomeViewProps {
+  setActivePage: (page: ActivePage) => void;
+  onOpenConsultation: () => void;
+  onOpenProjectLightbox?: (project: Project) => void;
+  onWhatsAppEnquiry: (msg?: string) => void;
+}
+
+export const HomeView: React.FC<HomeViewProps> = ({
+  setActivePage,
+  onOpenConsultation,
+  onOpenProjectLightbox,
+  onWhatsAppEnquiry
+}) => {
+  const [openFaqId, setOpenFaqId] = useState<string | null>('faq-1');
+
+  const toggleFaq = (id: string) => {
+    setOpenFaqId((prev) => (prev === id ? null : id));
+  };
+
+  return (
+    <div id="interior-affairs-homepage" className="w-full bg-[#FAF8F5] text-[#24221F]">
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 2. HOMEPAGE HERO                                          */}
+      {/* ------------------------------------------------------------------ */}
+      <section
+        id="hero-section"
+        className="relative min-h-[95vh] flex flex-col justify-between overflow-hidden bg-[#1C1A17]"
+      >
+        {/* Background Image with Editorial Overlay */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2000&auto=format&fit=crop"
+            alt="Interior Affairs Grey Structure to Finished Space"
+            className="w-full h-full object-cover brightness-90 contrast-[0.98]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1C1A17] via-[#1C1A17]/60 to-[#1C1A17]/80" />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-[1680px] mx-auto px-6 sm:px-10 lg:px-16 pt-36 sm:pt-44 lg:pt-48 pb-16 w-full">
+          <div className="max-w-4xl">
+            {/* Nationwide Tag */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6">
+              <Sparkles size={13} className="text-[#D5C8B8]" />
+              <span className="text-[10px] sm:text-[11px] tracking-[0.3em] uppercase text-[#FAF8F5] font-semibold">
+                NATIONWIDE · PAKISTAN
+              </span>
+            </div>
+
+            {/* Main Headline */}
+            <h1 className="font-serif-editorial text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#FAF8F5] leading-[1.1] font-medium tracking-tight mb-4">
+              FROM GREY STRUCTURE <br className="hidden sm:inline" />
+              <span className="italic text-[#D5C8B8] font-serif">TO FINISHED SPACE.</span>
+            </h1>
+
+            {/* Subtitles & Copy */}
+            <p className="font-sans text-sm sm:text-lg text-[#FAF8F5]/90 max-w-2xl leading-relaxed mb-4 font-normal tracking-wide">
+              Complete interior solutions, from the first wall to the final finishing detail.
+            </p>
+
+            <p className="font-sans text-xs sm:text-sm text-[#D5C8B8] max-w-2xl leading-relaxed mb-8 font-light">
+              Designer walls, custom kitchens, wardrobes, flooring, ceilings, blinds, and finishing touches — coordinated by one team, nationwide across Pakistan.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-4">
+              <button
+                onClick={() => {
+                  setActivePage('our-work');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="bg-[#FAF8F5] text-[#24221F] hover:bg-[#E7E1D8] text-xs uppercase tracking-[0.2em] font-semibold py-4 px-8 rounded text-center transition-all duration-300 shadow-xl flex items-center gap-3 cursor-pointer group"
+              >
+                <span>Explore Our Work</span>
+                <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </button>
+
+              <button
+                onClick={() => {
+                  setActivePage('quote');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="border border-[#FAF8F5]/80 bg-black/30 backdrop-blur-md text-[#FAF8F5] hover:bg-[#FAF8F5]/20 text-xs uppercase tracking-[0.2em] font-semibold py-4 px-8 rounded text-center transition-all duration-300 cursor-pointer"
+              >
+                Get a Quote
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Cue */}
+        <div className="relative z-10 w-full border-t border-white/15 bg-black/40 backdrop-blur-md py-4 px-6 sm:px-10 lg:px-16 flex items-center justify-between text-xs text-[#D5C8B8]">
+          <span className="tracking-[0.25em] uppercase text-[10px] font-semibold">
+            NATIONWIDE · PAKISTAN
+          </span>
+          <span className="tracking-[0.25em] uppercase text-[10px] flex items-center gap-2">
+            <span>SCROLL TO TRANSFORM</span>
+            <span className="w-8 h-[1px] bg-[#D5C8B8]" />
+          </span>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 3. INTRODUCTION                                           */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="introduction" className="py-24 sm:py-32 bg-[#FAF8F5] border-b border-[#E2DACF]">
+        <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div className="lg:col-span-6 space-y-6">
+              <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block">
+                YOUR SPACE. OUR EXPERTISE.
+              </span>
+              <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F] leading-tight">
+                Closing the gaps between vision and execution.
+              </h2>
+              <div className="space-y-4 text-sm sm:text-base text-[#756557] leading-relaxed font-light">
+                <p>
+                  Most interior projects fall apart in the gaps — a wall contractor who doesn't talk to the kitchen fabricator, a ceiling design decided after the lighting is already installed.
+                </p>
+                <p>
+                  Interior Affairs closes those gaps. We plan walls, floors, ceilings, kitchens, wardrobes, and finishing details together, from day one — so nothing gets decided in isolation and nothing gets left half-finished.
+                </p>
+              </div>
+
+              <div className="pt-4">
+                <button
+                  onClick={() => {
+                    setActivePage('about');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="bg-[#24221F] text-[#FAF8F5] hover:bg-[#3D3A36] text-xs uppercase tracking-[0.2em] font-semibold py-4 px-8 rounded transition-all inline-flex items-center gap-3 cursor-pointer"
+                >
+                  <span>Discover Interior Affairs</span>
+                  <ArrowRight size={15} />
+                </button>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6">
+              <div className="aspect-[4/3] bg-[#E7E1D8] overflow-hidden rounded-sm border border-[#E2DACF] shadow-xl relative">
+                <img
+                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1400&auto=format&fit=crop"
+                  alt="Interior Affairs Integrated Expertise"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute bottom-6 left-6 right-6 bg-[#FAF8F5]/90 backdrop-blur-md p-6 border border-[#E2DACF] rounded">
+                  <p className="text-xs uppercase tracking-[0.2em] font-semibold text-[#24221F] mb-1">
+                    Integrated Interior Execution
+                  </p>
+                  <p className="text-xs text-[#756557]">
+                    Single point of contact for walls, ceilings, kitchens, and finishing details.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 4. COMPLETE INTERIOR SOLUTIONS                             */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="complete-solutions" className="py-24 sm:py-32 bg-[#F5F2EC] border-b border-[#E2DACF]">
+        <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 text-center">
+          <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block mb-3">
+            EVERYTHING YOUR SPACE NEEDS. UNDER ONE ROOF.
+          </span>
+          <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F] mb-6">
+            Walls. Floors. Ceilings. Kitchens. Wardrobes. Windows. Details.
+          </h2>
+
+          <p className="text-sm sm:text-base text-[#756557] max-w-3xl mx-auto leading-relaxed mb-8 font-light">
+            Instead of hiring a separate contractor for every trade — and managing every handoff yourself — you work with one team that already knows how the pieces fit together.
+          </p>
+
+          <div className="inline-block bg-[#24221F] text-[#FAF8F5] px-6 py-3 rounded text-xs uppercase tracking-[0.25em] font-semibold">
+            One space. One team. One vision.
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 5. SERVICES                                               */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="services-section" className="py-24 sm:py-32 bg-[#FAF8F5] border-b border-[#E2DACF]">
+        <div className="max-w-[1680px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-[#E2DACF]">
+            <div>
+              <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block mb-2">
+                OUR SPECIALITIES
+              </span>
+              <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F]">
+                Complete Interior Services
+              </h2>
+            </div>
+            <button
+              onClick={() => {
+                setActivePage('services');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="text-xs uppercase tracking-[0.2em] font-semibold text-[#24221F] hover:text-[#756557] mt-4 md:mt-0 flex items-center gap-2 cursor-pointer"
+            >
+              <span>Explore All 10 Services</span>
+              <ArrowRight size={14} />
+            </button>
+          </div>
+
+          {/* 10 Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {SERVICES_LIST.map((srv, idx) => (
+              <div
+                key={srv.id}
+                onClick={() => {
+                  setActivePage('services');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="group cursor-pointer bg-[#F5F2EC] border border-[#E2DACF] p-6 hover:border-[#24221F] transition-all duration-300 rounded flex flex-col justify-between"
+              >
+                <div>
+                  <div className="aspect-[16/10] bg-[#E7E1D8] overflow-hidden mb-6 relative rounded-sm">
+                    <img
+                      src={srv.image}
+                      alt={srv.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-3 left-3 bg-[#24221F]/85 backdrop-blur-sm text-[#FAF8F5] text-[9px] uppercase tracking-[0.2em] px-2.5 py-1 font-semibold">
+                      0{idx + 1}
+                    </div>
+                  </div>
+
+                  <h3 className="font-serif-editorial text-2xl text-[#24221F] mb-1 font-semibold">
+                    {srv.title}
+                  </h3>
+                  <h4 className="text-xs uppercase tracking-[0.16em] font-semibold text-[#756557] mb-3">
+                    {srv.headline}
+                  </h4>
+                  <p className="text-xs text-[#756557] leading-relaxed mb-6 font-light">
+                    {srv.description}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-[#E2DACF] flex items-center justify-between text-xs font-semibold text-[#24221F] group-hover:underline">
+                  <span>{srv.ctaText}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 6. SPACES                                                 */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="spaces-section" className="py-24 sm:py-32 bg-[#F5F2EC] border-b border-[#E2DACF]">
+        <div className="max-w-[1680px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="max-w-3xl mb-16">
+            <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block mb-2">
+              WHERE ARE WE TRANSFORMING?
+            </span>
+            <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F] mb-4">
+              Designed for how you actually live.
+            </h2>
+            <p className="text-sm text-[#756557] font-light leading-relaxed">
+              Every room is used differently, so we design each one on its own terms — not from a single template applied room to room.
+            </p>
+          </div>
+
+          {/* 6 Spaces Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {SPACES_LIST.map((space) => (
+              <div
+                key={space.id}
+                onClick={() => {
+                  setActivePage('spaces');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="group cursor-pointer bg-[#FAF8F5] border border-[#E2DACF] p-6 hover:border-[#24221F] transition-all duration-300 rounded"
+              >
+                <div className="aspect-[4/3] bg-[#E7E1D8] overflow-hidden mb-6 rounded-sm">
+                  <img
+                    src={space.image}
+                    alt={space.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <h3 className="font-serif-editorial text-2xl text-[#24221F] mb-1 font-semibold">
+                  {space.title}
+                </h3>
+                <p className="text-xs font-semibold text-[#756557] uppercase tracking-[0.15em] mb-3">
+                  {space.tagline}
+                </p>
+                <p className="text-xs text-[#756557] leading-relaxed mb-6 font-light">
+                  {space.description}
+                </p>
+                <div className="text-xs font-semibold text-[#24221F] group-hover:underline">
+                  {space.ctaText}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 7. SIGNATURE TRANSFORMATION SECTION                      */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="signature-transformation" className="py-24 sm:py-32 bg-[#FAF8F5] border-b border-[#E2DACF]">
+        <div className="max-w-[1680px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block mb-2">
+              SEE THE TRANSFORMATION.
+            </span>
+            <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F] mb-4">
+              From Bare Structure to Finished Home.
+            </h2>
+            <p className="text-sm text-[#756557] font-light leading-relaxed">
+              From bare walls and unfinished floors to a space that's ready to live in — here's how we get there.
+            </p>
+          </div>
+
+          {/* Transformation Workflow Diagram */}
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-3 mb-16">
+            {['GREY STRUCTURE', 'DESIGN', 'MATERIALS', 'CRAFTSMANSHIP', 'FINISHING', 'YOUR SPACE'].map(
+              (step, idx) => (
+                <div
+                  key={step}
+                  className="bg-[#F5F2EC] border border-[#E2DACF] p-4 text-center rounded flex flex-col justify-center items-center"
+                >
+                  <span className="text-[10px] font-mono text-[#756557] mb-1">0{idx + 1}</span>
+                  <span className="text-xs uppercase tracking-[0.18em] font-semibold text-[#24221F]">
+                    {step}
+                  </span>
+                </div>
+              )
+            )}
+          </div>
+
+          {/* Interactive Before & After Comparison Slider */}
+          <div className="max-w-5xl mx-auto mb-12">
+            <BeforeAfterSlider
+              beforeImage="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?q=80&w=1600&auto=format&fit=crop"
+              afterImage="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1600&auto=format&fit=crop"
+              title="Interactive Grey Structure Comparison"
+              beforeLabel="GREY STRUCTURE (RAW)"
+              afterLabel="FINISHED INTERIOR"
+            />
+          </div>
+
+          <div className="text-center">
+            <button
+              onClick={() => {
+                setActivePage('quote');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="bg-[#24221F] text-[#FAF8F5] hover:bg-[#3D3A36] text-xs uppercase tracking-[0.2em] font-semibold py-4 px-8 rounded transition-all inline-flex items-center gap-3 cursor-pointer"
+            >
+              <span>START YOUR TRANSFORMATION →</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 8. COMPLETE HOME SECTION                                  */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="complete-home-section" className="py-24 sm:py-32 bg-[#1C1A17] text-[#FAF8F5]">
+        <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 text-center">
+          <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#D5C8B8] block mb-3">
+            DESIGNED TOGETHER. BUILT AS ONE HOME.
+          </span>
+          <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#FAF8F5] mb-6">
+            ONE TEAM. ONE VISION. ONE FINISHED SPACE.
+          </h2>
+
+          <p className="text-sm sm:text-base text-[#FAF8F5]/80 max-w-3xl mx-auto leading-relaxed mb-6 font-light">
+            Your walls, floors, ceilings, kitchen, wardrobes, and blinds shouldn't feel like six separate decisions made by six separate people. We plan them as one interior from the start — so the materials, tones, and details carry through the whole home, not just one room.
+          </p>
+
+          <p className="text-xs sm:text-sm text-[#D5C8B8] max-w-2xl mx-auto leading-relaxed mb-8 font-serif italic">
+            From the first room to the final detail, everything is designed to belong together.
+          </p>
+
+          <button
+            onClick={() => {
+              setActivePage('quote');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="bg-[#FAF8F5] text-[#1C1A17] hover:bg-[#E7E1D8] text-xs uppercase tracking-[0.2em] font-semibold py-4 px-8 rounded transition-all inline-flex items-center gap-3 cursor-pointer"
+          >
+            <span>Start Your Project</span>
+            <ArrowRight size={15} />
+          </button>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 9. DESIGN YOUR SPACE — INTERACTIVE PLANNING TOOLS         */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="interactive-tools" className="py-24 sm:py-32 bg-[#FAF8F5] border-b border-[#E2DACF]">
+        <div className="max-w-[1680px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block mb-2">
+              NOT SURE WHERE TO START?
+            </span>
+            <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F] mb-4">
+              Interactive Planning Tools
+            </h2>
+            <p className="text-sm text-[#756557] font-light leading-relaxed">
+              Use our Design Wizard and Budget Planner to see what's possible before you commit to a single material.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
+            {/* Design Wizard Card */}
+            <div className="bg-[#F5F2EC] border border-[#E2DACF] p-8 rounded flex flex-col justify-between">
+              <div>
+                <h3 className="font-serif-editorial text-2xl text-[#24221F] mb-3 font-semibold">
+                  DESIGN WIZARD
+                </h3>
+                <p className="text-xs text-[#756557] leading-relaxed mb-6 font-light">
+                  Answer a few questions about your space, your style, and your priorities. We'll put together a starting direction for materials, layout, and finishes — a real starting point, not a blank page.
+                </p>
+              </div>
+              <button
+                onClick={() => {
+                  setActivePage('design-wizard');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="bg-[#24221F] text-[#FAF8F5] hover:bg-[#3D3A36] text-xs uppercase tracking-[0.18em] font-semibold py-3.5 px-6 rounded text-center transition-all cursor-pointer"
+              >
+                Try the Design Wizard →
+              </button>
+            </div>
+
+            {/* Budget Planner Card */}
+            <div className="bg-[#F5F2EC] border border-[#E2DACF] p-8 rounded flex flex-col justify-between">
+              <div>
+                <h3 className="font-serif-editorial text-2xl text-[#24221F] mb-3 font-semibold">
+                  BUDGET PLANNER
+                </h3>
+                <p className="text-xs text-[#756557] leading-relaxed mb-6 font-light">
+                  Tell us your investment range — from an accent wall to a full multi-room fit-out — and see which combinations of pieces and finishes actually fit inside it, in real PKR figures, before you request a quote.
+                </p>
+              </div>
+              <button
+                onClick={() => {
+                  setActivePage('budget-planner');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="bg-[#24221F] text-[#FAF8F5] hover:bg-[#3D3A36] text-xs uppercase tracking-[0.18em] font-semibold py-3.5 px-6 rounded text-center transition-all cursor-pointer"
+              >
+                Open the Budget Planner →
+              </button>
+            </div>
+          </div>
+
+          {/* Manual Combinations List */}
+          <div className="bg-[#F5F2EC] border border-[#E2DACF] p-8 rounded max-w-5xl mx-auto">
+            <h4 className="text-xs uppercase tracking-[0.2em] font-semibold text-[#24221F] mb-4">
+              Explore Combinations Manually:
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs text-[#756557]">
+              <div><strong className="text-[#24221F]">WALLS</strong> — Textures · Panels · Wallpapers · Decorative Finishes</div>
+              <div><strong className="text-[#24221F]">FLOORS</strong> — Wood · Stone · Modern Finishes</div>
+              <div><strong className="text-[#24221F]">CEILINGS</strong> — Minimal · Layered · Cove Lighting · Decorative</div>
+              <div><strong className="text-[#24221F]">KITCHENS</strong> — Modern · Minimal · Contemporary · Custom</div>
+              <div><strong className="text-[#24221F]">WARDROBES</strong> — Built-in · Sliding · Walk-in · Custom</div>
+              <div><strong className="text-[#24221F]">WINDOWS</strong> — Blinds · Light Control · Privacy</div>
+            </div>
+
+            <div className="mt-8 text-center">
+              <button
+                onClick={() => {
+                  setActivePage('quote');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="bg-[#24221F] text-[#FAF8F5] hover:bg-[#3D3A36] text-xs uppercase tracking-[0.2em] font-semibold py-3.5 px-8 rounded transition-all cursor-pointer"
+              >
+                CREATE YOUR INTERIOR →
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 10. OUR PROCESS                                           */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="process-section" className="py-24 sm:py-32 bg-[#FAF8F5] border-b border-[#E2DACF]">
+        <div className="max-w-[1680px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="max-w-3xl mb-16">
+            <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block mb-2">
+              OUR PROCESS
+            </span>
+            <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F] mb-4">
+              FROM IDEA TO FINISHED SPACE.
+            </h2>
+            <p className="text-sm text-[#756557] font-light leading-relaxed">
+              Interior projects go wrong when steps get skipped or reordered. Ours don't.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {PROCESS_STEPS.map((step) => (
+              <div key={step.step} className="bg-[#F5F2EC] border border-[#E2DACF] p-8 rounded space-y-3">
+                <span className="font-serif italic text-2xl text-[#D5C8B8] block">{step.step}</span>
+                <h3 className="font-serif-editorial text-xl font-semibold text-[#24221F]">{step.title}</h3>
+                <p className="text-xs text-[#756557] leading-relaxed font-light">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 11. OUR WORK (Featured Projects)                          */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="our-work-section" className="py-24 sm:py-32 bg-[#F5F2EC] border-b border-[#E2DACF]">
+        <div className="max-w-[1680px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-[#E2DACF]">
+            <div>
+              <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block mb-2">
+                OUR WORK
+              </span>
+              <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F] mb-2">
+                SPACES WE'VE TRANSFORMED.
+              </h2>
+              <p className="text-xs text-[#756557] font-light max-w-xl">
+                Every project starts from a different brief — a bare grey structure, a dated kitchen, a single accent wall. What they share is a finished result that looks intentional, not assembled.
+              </p>
+            </div>
+            <button
+              onClick={() => {
+                setActivePage('our-work');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="bg-[#24221F] text-[#FAF8F5] hover:bg-[#3D3A36] text-xs uppercase tracking-[0.18em] font-semibold py-3.5 px-6 rounded mt-4 md:mt-0 transition-all cursor-pointer"
+            >
+              View All Projects
+            </button>
+          </div>
+
+          {/* Project Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {PROJECTS.map((proj) => (
+              <div
+                key={proj.id}
+                onClick={() => {
+                  if (onOpenProjectLightbox) onOpenProjectLightbox(proj);
+                  else setActivePage('our-work');
+                }}
+                className="group cursor-pointer bg-[#FAF8F5] border border-[#E2DACF] p-4 hover:border-[#24221F] transition-all duration-300 rounded"
+              >
+                <div className="aspect-[4/3] bg-[#E7E1D8] overflow-hidden mb-4 rounded-sm">
+                  <img
+                    src={proj.heroImage}
+                    alt={proj.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#24221F] block mb-1">
+                  {proj.label}
+                </span>
+                <span className="text-xs text-[#756557] block mb-2">{proj.location}</span>
+                <h3 className="font-serif-editorial text-lg text-[#24221F] font-semibold group-hover:underline">
+                  {proj.title}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 13. MATERIALS & FINISHES                                  */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="materials-section" className="py-24 sm:py-32 bg-[#FAF8F5] border-b border-[#E2DACF]">
+        <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 space-y-6">
+              <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block">
+                MATERIALS & FINISHES
+              </span>
+              <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F] leading-tight">
+                THE RIGHT MATERIAL <br />
+                <span className="italic font-serif">CHANGES EVERYTHING.</span>
+              </h2>
+
+              <p className="text-sm sm:text-base text-[#756557] leading-relaxed font-light">
+                Run a hand along a poorly finished panel edge and you feel it immediately — even if you can't name what's wrong. The same is true in reverse.
+              </p>
+
+              <p className="text-xs sm:text-sm text-[#756557] leading-relaxed font-light">
+                We work with a curated range of materials — walnut and matte-lacquer joinery, natural stone and engineered wood flooring, textured plaster and PVC panel systems, brass and gold-finish inlay details — selected for how they perform daily, not just how they photograph.
+              </p>
+
+              {/* Material Categories Pills */}
+              <div className="flex flex-wrap gap-2 pt-2">
+                {MATERIALS_CURATED_LIST.map((mat) => (
+                  <span
+                    key={mat}
+                    className="text-[11px] uppercase tracking-[0.15em] font-semibold px-3 py-1.5 bg-[#F5F2EC] border border-[#E2DACF] text-[#24221F] rounded"
+                  >
+                    {mat}
+                  </span>
+                ))}
+              </div>
+
+              <div className="pt-4">
+                <button
+                  onClick={() => {
+                    setActivePage('services');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="bg-[#24221F] text-[#FAF8F5] hover:bg-[#3D3A36] text-xs uppercase tracking-[0.2em] font-semibold py-4 px-8 rounded transition-all inline-flex items-center gap-3 cursor-pointer"
+                >
+                  <span>EXPLORE MATERIALS →</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5">
+              <div className="aspect-[4/5] bg-[#E7E1D8] overflow-hidden rounded border border-[#E2DACF] shadow-xl">
+                <img
+                  src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop"
+                  alt="Interior Affairs Premium Materials"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 14. CRAFTSMANSHIP                                         */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="craftsmanship-section" className="py-24 sm:py-32 bg-[#F5F2EC] border-b border-[#E2DACF]">
+        <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 text-center">
+          <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block mb-3">
+            CRAFTSMANSHIP
+          </span>
+          <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F] mb-8">
+            THE DIFFERENCE IS IN THE DETAILS.
+          </h2>
+
+          <div className="max-w-2xl mx-auto space-y-4 text-sm sm:text-base text-[#756557] font-light leading-relaxed mb-10 text-left sm:text-center">
+            <p className="flex items-center gap-3 justify-center">
+              <Check size={16} className="text-[#24221F] shrink-0" />
+              <span>A clean edge where two panels meet.</span>
+            </p>
+            <p className="flex items-center gap-3 justify-center">
+              <Check size={16} className="text-[#24221F] shrink-0" />
+              <span>A ceiling profile that lines up exactly with the wall below it.</span>
+            </p>
+            <p className="flex items-center gap-3 justify-center">
+              <Check size={16} className="text-[#24221F] shrink-0" />
+              <span>A drawer that closes the same way on day one and day one thousand.</span>
+            </p>
+          </div>
+
+          <p className="text-xs sm:text-sm text-[#756557] max-w-xl mx-auto font-light mb-6 leading-relaxed">
+            None of it demands attention on its own. But leave one of them out, and the whole room feels slightly off — even to someone who couldn't tell you why.
+          </p>
+
+          <p className="font-serif italic text-lg sm:text-xl text-[#24221F]">
+            At Interior Affairs, these are the details we don't skip.
+          </p>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 15. WHY INTERIOR AFFAIRS                                  */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="why-us-section" className="py-24 sm:py-32 bg-[#FAF8F5] border-b border-[#E2DACF]">
+        <div className="max-w-[1680px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="max-w-3xl mb-16">
+            <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block mb-2">
+              WHY INTERIOR AFFAIRS
+            </span>
+            <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F] mb-4">
+              MORE THAN FINISHING. <br />
+              <span className="italic font-serif">A COMPLETE APPROACH.</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-[#F5F2EC] border border-[#E2DACF] p-8 rounded space-y-3">
+              <h3 className="font-serif-editorial text-xl font-semibold text-[#24221F]">
+                COMPLETE SOLUTIONS
+              </h3>
+              <p className="text-xs text-[#756557] leading-relaxed font-light">
+                From grey structure to final finishing, one team handles the full scope — so you're not coordinating separate contractors for walls, kitchen, and ceilings.
+              </p>
+            </div>
+
+            <div className="bg-[#F5F2EC] border border-[#E2DACF] p-8 rounded space-y-3">
+              <h3 className="font-serif-editorial text-xl font-semibold text-[#24221F]">
+                ONE COORDINATED TEAM
+              </h3>
+              <p className="text-xs text-[#756557] leading-relaxed font-light">
+                A single point of contact manages every trade on-site, so scheduling conflicts and miscommunication between contractors aren't your problem to solve.
+              </p>
+            </div>
+
+            <div className="bg-[#F5F2EC] border border-[#E2DACF] p-8 rounded space-y-3">
+              <h3 className="font-serif-editorial text-xl font-semibold text-[#24221F]">
+                DESIGN-LED APPROACH
+              </h3>
+              <p className="text-xs text-[#756557] leading-relaxed font-light">
+                Every material and finish decision is made in context — how it looks next to what's already in the room, not in isolation.
+              </p>
+            </div>
+
+            <div className="bg-[#F5F2EC] border border-[#E2DACF] p-8 rounded space-y-3">
+              <h3 className="font-serif-editorial text-xl font-semibold text-[#24221F]">
+                CUSTOM SOLUTIONS
+              </h3>
+              <p className="text-xs text-[#756557] leading-relaxed font-light">
+                Kitchens and wardrobes are built to your room's actual dimensions, not adapted from a standard size.
+              </p>
+            </div>
+
+            <div className="bg-[#F5F2EC] border border-[#E2DACF] p-8 rounded space-y-3">
+              <h3 className="font-serif-editorial text-xl font-semibold text-[#24221F]">
+                ATTENTION TO DETAIL
+              </h3>
+              <p className="text-xs text-[#756557] leading-relaxed font-light">
+                Panel alignment, edge finishing, and hardware quality are checked before handover, not left for you to discover later.
+              </p>
+            </div>
+
+            <div className="bg-[#F5F2EC] border border-[#E2DACF] p-8 rounded space-y-3">
+              <h3 className="font-serif-editorial text-xl font-semibold text-[#24221F]">
+                NATIONWIDE COVERAGE
+              </h3>
+              <p className="text-xs text-[#756557] leading-relaxed font-light">
+                We manage project timelines and procurement across Pakistan — which means seamless execution and dependable handover dates.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 18. GREY STRUCTURE SERVICE                                */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="grey-structure-section" className="py-24 sm:py-32 bg-[#F5F2EC] border-b border-[#E2DACF]">
+        <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 text-center">
+          <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block mb-3">
+            STARTING WITH A BLANK CANVAS?
+          </span>
+          <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F] mb-6">
+            Grey Structure Finishing Service
+          </h2>
+
+          <p className="text-sm sm:text-base text-[#756557] max-w-3xl mx-auto leading-relaxed mb-8 font-light">
+            A grey structure is bare walls, exposed wiring points, and unfinished floors — and also the easiest starting point to get a coordinated interior right, because nothing has to be undone first.
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-3 mb-10 text-xs font-semibold text-[#24221F]">
+            {['Walls', 'Ceilings', 'Flooring', 'Kitchen', 'Wardrobes', 'Blinds', 'Decorative Finishes'].map(
+              (item) => (
+                <span key={item} className="px-4 py-2 bg-[#FAF8F5] border border-[#E2DACF] rounded">
+                  {item}
+                </span>
+              )
+            )}
+          </div>
+
+          <h3 className="font-serif-editorial text-2xl sm:text-3xl text-[#24221F] mb-8 italic">
+            FROM BARE SPACE TO A PLACE THAT FEELS LIKE HOME.
+          </h3>
+
+          <button
+            onClick={() => {
+              setActivePage('quote');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="bg-[#24221F] text-[#FAF8F5] hover:bg-[#3D3A36] text-xs uppercase tracking-[0.2em] font-semibold py-4 px-8 rounded transition-all cursor-pointer"
+          >
+            Start Your Project
+          </button>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 19. CONSULTATION CTA                                      */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="consultation-section" className="py-24 sm:py-32 bg-[#FAF8F5] border-b border-[#E2DACF]">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 text-center">
+          <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block mb-3">
+            LET'S TALK ABOUT YOUR SPACE.
+          </span>
+          <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F] mb-6">
+            Where are you starting from?
+          </h2>
+
+          <p className="text-sm sm:text-base text-[#756557] max-w-2xl mx-auto leading-relaxed mb-8 font-light">
+            New home. Existing renovation. Starting from grey structure. Or just one room that needs work. Tell us where you're starting from, and we'll tell you what the realistic next step looks like — timeline, rough budget range, and what to plan for.
+          </p>
+
+          <div className="flex flex-wrap justify-center items-center gap-4">
+            <button
+              onClick={onOpenConsultation}
+              className="bg-[#24221F] text-[#FAF8F5] hover:bg-[#3D3A36] text-xs uppercase tracking-[0.2em] font-semibold py-4 px-8 rounded transition-all cursor-pointer"
+            >
+              BOOK A CONSULTATION
+            </button>
+            <button
+              onClick={() => onWhatsAppEnquiry('Hi Interior Affairs, I would like to enquire about my space.')}
+              className="bg-[#25D366] text-[#FAF8F5] hover:bg-[#1ebd59] text-xs uppercase tracking-[0.2em] font-semibold py-4 px-8 rounded transition-all cursor-pointer"
+            >
+              WHATSAPP US
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 22. SHOWROOM / OFFICE CTA                                 */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="showroom-office-cta" className="py-24 sm:py-32 bg-[#F5F2EC] border-b border-[#E2DACF]">
+        <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 space-y-6">
+              <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block">
+                LET'S TAKE THIS CONVERSATION FURTHER.
+              </span>
+              <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F] leading-tight">
+                Visit Our Studio & Material Library.
+              </h2>
+              <p className="text-sm text-[#756557] leading-relaxed font-light">
+                Photos and renders only tell you so much. Seeing a stone finish or a fabric swatch in person tells you the rest. Come discuss your project, look through material samples, and talk timeline with our team directly.
+              </p>
+              <p className="text-xs uppercase tracking-[0.2em] font-semibold text-[#24221F]">
+                Nationwide Service · Studio Consultation
+              </p>
+
+              <div className="pt-4 flex flex-wrap items-center gap-4">
+                <button
+                  onClick={() => {
+                    setActivePage('contact');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="bg-[#24221F] text-[#FAF8F5] hover:bg-[#3D3A36] text-xs uppercase tracking-[0.2em] font-semibold py-4 px-8 rounded transition-all cursor-pointer"
+                >
+                  CONTACT US
+                </button>
+                <a
+                  href="https://maps.app.goo.gl/PKFYVzzRkpUqQ7YC6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border border-[#24221F] text-[#24221F] hover:bg-[#24221F] hover:text-[#FAF8F5] text-xs uppercase tracking-[0.2em] font-semibold py-4 px-8 rounded transition-all cursor-pointer flex items-center gap-2"
+                >
+                  <MapPin size={15} />
+                  <span>GET DIRECTIONS</span>
+                </a>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5">
+              <div className="aspect-[4/3] bg-[#E7E1D8] overflow-hidden rounded border border-[#E2DACF] shadow-xl">
+                <img
+                  src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop"
+                  alt="Interior Affairs Studio Space"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* SECTION 23. FAQ                                                   */}
+      {/* ------------------------------------------------------------------ */}
+      <section id="faq-section" className="py-24 sm:py-32 bg-[#FAF8F5]">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block mb-2">
+              FREQUENTLY ASKED QUESTIONS
+            </span>
+            <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F]">
+              Got Questions? We Have Answers.
+            </h2>
+          </div>
+
+          <div className="space-y-4 max-w-4xl mx-auto">
+            {FAQ_LIST.map((faq) => {
+              const isOpen = openFaqId === faq.id;
+              return (
+                <div
+                  key={faq.id}
+                  className="bg-[#F5F2EC] border border-[#E2DACF] rounded overflow-hidden transition-all"
+                >
+                  <button
+                    onClick={() => toggleFaq(faq.id)}
+                    className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-[#E7E1D8]/40 transition-colors"
+                  >
+                    <span className="font-serif-editorial text-lg sm:text-xl text-[#24221F] font-semibold">
+                      {faq.question}
+                    </span>
+                    {isOpen ? (
+                      <ChevronUp size={20} className="text-[#24221F] shrink-0" />
+                    ) : (
+                      <ChevronDown size={20} className="text-[#756557] shrink-0" />
+                    )}
+                  </button>
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-6 pb-6 pt-2 text-xs sm:text-sm text-[#756557] leading-relaxed border-t border-[#E2DACF]/60 font-light">
+                          {faq.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};

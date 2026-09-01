@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-warm: #F5F2EC;
+    --bg-secondary: #E7E1D8;
+    --accent-warm: #D5C8B8;
+    --text-primary: #24221F;
+    --text-secondary: #756557;
+    --border-color: #D5C8B8;
+    --border-subtle: #E2DACF;
+    --border-dark: #24221F;
+  }
+
+  body {
+    background-color: #F5F2EC;
+    color: #24221F;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, .font-serif, .font-serif-editorial {
+    font-family: 'Playfair Display', 'Cormorant Garamond', 'Georgia', serif;
+  }
+}
+
+/* Luxury Grain & Noise Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.tracking-extra {
+  letter-spacing: 0.2em;
+}
+
+.tracking-editorial {
+  letter-spacing: 0.28em;
+}
+
+.bg-warm-secondary {
+  background-color: #E7E1D8;
+}
+
+.border-warm {
+  border-color: #D5C8B8;
+}
+
+.text-warm-muted {
+  color: #756557;
+}
+
+/* Glassmorphism Surface Utility */
+.glass-header {
+  background-color: rgba(245, 242, 236, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.glass-card {
+  background-color: rgba(250, 248, 245, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.glass-dark {
+  background-color: rgba(36, 34, 31, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Custom scrollbars for subtle horizontal galleries */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Subtle image overlay for cinematic photography */
+.editorial-hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(36, 34, 31, 0.25) 0%,
+    rgba(36, 34, 31, 0.1) 40%,
+    rgba(36, 34, 31, 0.75) 100%
+  );
+}
+
+/* Clean minimal selection */
+::selection {
+  background-color: #24221F;
+  color: #F5F2EC;
+}
+
+/* Pulsing Hotspot Keyframes */
+@keyframes hotspotPulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(245, 242, 236, 0.7);
+  }
+  70% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 14px rgba(245, 242, 236, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(245, 242, 236, 0);
+  }
+}
+
+.hotspot-pulse-ring {
+  animation: hotspotPulse 2.2s infinite cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+/* Bouncing Scroll Down Indicator */
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.animate-scroll-bounce {
+  animation: scrollBounce 2s infinite ease-in-out;
+}
+
+
