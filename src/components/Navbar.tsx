@@ -88,30 +88,30 @@ export const Navbar: React.FC<NavbarProps> = ({
           />
         )}
 
-        {/* Main Navbar Container with Increased Padding & Height for Full Logo Visibility */}
-        <div className="max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-12 py-2 min-h-[76px] sm:min-h-[88px] lg:min-h-[96px] flex items-center justify-between gap-4">
+        {/* Main Navbar Container with Mobile Responsive Padding */}
+        <div className="max-w-[1680px] w-full mx-auto px-2.5 sm:px-6 lg:px-12 py-1.5 min-h-[68px] sm:min-h-[84px] lg:min-h-[92px] flex items-center justify-between gap-1.5 sm:gap-4 overflow-visible">
           {/* Mobile Left Menu Trigger */}
-          <div className="flex items-center lg:hidden">
+          <div className="flex items-center lg:hidden shrink-0">
             <button
               id="mobile-menu-toggle-btn"
               onClick={() => setMobileMenuOpen(true)}
-              className={`p-2 -ml-1 rounded-lg transition-all duration-300 ${textColor} hover:bg-black/5 active:scale-95 flex items-center gap-1.5 cursor-pointer`}
+              className={`p-1.5 sm:p-2 -ml-1 rounded-lg transition-all duration-300 ${textColor} hover:bg-black/5 active:scale-95 flex items-center gap-1 cursor-pointer`}
               aria-label="Open Navigation Menu"
             >
-              <Menu size={22} strokeWidth={1.5} />
+              <Menu size={20} strokeWidth={1.5} className="sm:w-[22px] sm:h-[22px]" />
               <span className="text-[10px] uppercase tracking-[0.18em] font-medium hidden sm:inline">Menu</span>
             </button>
           </div>
 
-          {/* Official Brand Logo: Red Rooflines + Black/White Text */}
-          <div className="flex items-center py-1">
+          {/* Official Brand Logo */}
+          <div className="flex items-center shrink-0">
             <button
               id="brand-logo-btn"
               onClick={() => {
                 setActivePage('home');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="text-left group cursor-pointer flex items-center py-1 transition-transform hover:scale-[1.02] overflow-visible"
+              className="text-left group cursor-pointer flex items-center py-0.5 transition-transform hover:scale-[1.02] overflow-visible"
               aria-label="Interior Affairs Home"
             >
               <Logo
@@ -162,13 +162,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
           </nav>
 
-          {/* Right Controls & Primary CTA: GET A QUOTE */}
-          <div className="flex items-center space-x-2 sm:space-x-3">
+          {/* Right Controls & Fully Visible Mobile-Optimized Primary CTA */}
+          <div className="flex items-center space-x-1.5 sm:space-x-3 shrink-0">
             {/* Search Button */}
             <button
               id="header-search-btn"
               onClick={onOpenSearch}
-              className={`p-2.5 rounded-full border transition-all duration-300 flex items-center justify-center cursor-pointer ${
+              className={`p-2 sm:p-2.5 rounded-full border transition-all duration-300 flex items-center justify-center cursor-pointer ${
                 isTransparentOverHero
                   ? 'border-[#FAF8F5]/30 bg-black/20 text-[#FAF8F5] hover:bg-black/40'
                   : 'border-[#E2DACF] bg-[#FAF8F5]/80 text-[#24221F] hover:bg-[#E7E1D8]'
@@ -176,37 +176,37 @@ export const Navbar: React.FC<NavbarProps> = ({
               aria-label="Search"
               title="Search Services & Spaces"
             >
-              <Search size={16} strokeWidth={1.75} />
+              <Search size={15} strokeWidth={1.75} className="sm:w-4 sm:h-4" />
             </button>
 
             {/* Wishlist Button */}
             <button
               id="header-wishlist-btn"
               onClick={onOpenWishlist}
-              className={`p-2.5 rounded-full relative transition-all duration-300 cursor-pointer ${textColor} ${
+              className={`p-2 sm:p-2.5 rounded-full relative transition-all duration-300 cursor-pointer ${textColor} ${
                 isTransparentOverHero ? 'hover:bg-white/10' : 'hover:bg-[#24221F]/5'
               }`}
               aria-label="View Saved Pieces"
               title="Saved Items"
             >
-              <Heart size={18} strokeWidth={1.75} />
+              <Heart size={16} strokeWidth={1.75} className="sm:w-[18px] sm:h-[18px]" />
               {wishlistCount > 0 && (
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   key={wishlistCount}
-                  className="absolute top-1 right-1 w-4 h-4 rounded-full bg-[#C81E2B] text-[#FAF8F5] text-[9px] font-semibold flex items-center justify-center shadow-md border border-[#FAF8F5]/30"
+                  className="absolute top-0.5 right-0.5 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-[#C81E2B] text-[#FAF8F5] text-[8px] sm:text-[9px] font-semibold flex items-center justify-center shadow-md border border-[#FAF8F5]/30"
                 >
                   {wishlistCount}
                 </motion.span>
               )}
             </button>
 
-            {/* Primary CTA: GET A QUOTE */}
+            {/* Primary CTA: GET A QUOTE (Fully Visible on All Screen Sizes) */}
             <button
               id="header-get-quote-btn"
               onClick={handleQuoteAction}
-              className={`inline-flex items-center gap-2 text-[11px] xl:text-[12px] uppercase tracking-[0.2em] font-semibold px-5 py-2.5 rounded-md transition-all duration-300 shadow-md cursor-pointer group ${
+              className={`inline-flex items-center gap-1 sm:gap-2 text-[10px] sm:text-[11px] xl:text-[12px] uppercase tracking-[0.1em] sm:tracking-[0.2em] font-semibold px-2.5 sm:px-5 py-1.5 sm:py-2.5 rounded-md transition-all duration-300 shadow-md cursor-pointer group shrink-0 whitespace-nowrap ${
                 isTransparentOverHero
                   ? 'bg-[#FAF8F5] text-[#24221F] hover:bg-[#E7E1D8] hover:shadow-lg'
                   : 'bg-[#24221F] text-[#FAF8F5] hover:bg-[#3D3A36] hover:shadow-md'
@@ -214,8 +214,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <span>GET A QUOTE</span>
               <ArrowRight
-                size={14}
-                className="transition-transform duration-300 group-hover:translate-x-1"
+                size={13}
+                className="transition-transform duration-300 group-hover:translate-x-1 shrink-0"
               />
             </button>
           </div>
