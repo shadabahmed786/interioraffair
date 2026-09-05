@@ -157,9 +157,9 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Bottom Credits & Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#FAF8F5]/50">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#FAF8F5]/50 text-center sm:text-left">
           <p>© {new Date().getFullYear()} INTERIOR AFFAIRS. All Rights Reserved.</p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
             <span>Nationwide Turnkey Interior Architecture · Pakistan</span>
             <button onClick={scrollToTop} className="hover:text-[#FAF8F5] underline cursor-pointer">
               Back to Top ↑

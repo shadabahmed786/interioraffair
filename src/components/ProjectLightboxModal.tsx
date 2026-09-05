@@ -105,8 +105,8 @@ export const ProjectLightboxModal: React.FC<ProjectLightboxModalProps> = ({
           </div>
 
           {/* Bottom Details Footer */}
-          <div className="p-4 sm:p-6 bg-black/40 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-            <div className="flex items-center gap-6 text-[#D5C8B8]">
+          <div className="p-3 sm:p-6 bg-black/50 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs w-full">
+            <div className="flex flex-wrap items-center gap-3.5 sm:gap-6 text-[#D5C8B8]">
               <div>
                 <span className="text-[9px] uppercase tracking-widest text-[#FAF8F5]/60 block">Scope</span>
                 <span className="font-medium text-[#FAF8F5]">Everything after Grey Structure</span>
@@ -116,19 +116,19 @@ export const ProjectLightboxModal: React.FC<ProjectLightboxModalProps> = ({
                 <span className="font-medium text-[#FAF8F5]">{project.timeline || '6–8 Weeks'}</span>
               </div>
               <div>
-                <span className="text-[9px] uppercase tracking-widest text-[#FAF8F5]/60 block">Category</span>
-                <span className="font-medium text-[#FAF8F5] uppercase">{project.category}</span>
+                <span className="text-[9px] uppercase tracking-widest text-[#FAF8F5]/60 block">Type</span>
+                <span className="font-medium text-[#FAF8F5] uppercase">{project.type || project.label}</span>
               </div>
             </div>
 
             {/* Image Thumbnails */}
             {images.length > 1 && (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 overflow-x-auto max-w-full pb-1 hide-scrollbar shrink-0">
                 {images.map((img, idx) => (
                   <button
                     key={idx}
                     onClick={() => setActiveImageIndex(idx)}
-                    className={`w-12 h-9 rounded overflow-hidden border transition-all cursor-pointer ${
+                    className={`w-11 h-8 sm:w-12 sm:h-9 rounded overflow-hidden border transition-all cursor-pointer shrink-0 ${
                       idx === activeImageIndex ? 'border-[#D5C8B8] ring-2 ring-[#D5C8B8]/40 scale-105' : 'border-white/20 opacity-60 hover:opacity-100'
                     }`}
                   >

@@ -176,7 +176,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
             {/* Modal Footer */}
             <div className="mt-8 pt-4 border-t border-[#E2DACF] flex flex-col sm:flex-row justify-between items-center text-xs text-[#756557]">
-              <span>Need custom dimensions? Request bespoke joinery from Nora Atelier.</span>
+              <span>Need custom dimensions? Request bespoke joinery from Interior Affairs.</span>
               <button
                 onClick={() => {
                   onClose();

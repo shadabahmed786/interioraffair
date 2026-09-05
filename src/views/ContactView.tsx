@@ -29,11 +29,7 @@ export const ContactView: React.FC<ContactViewProps> = ({
   return (
     <div id="contact-page" className="py-16 sm:py-24 bg-[#FAF8F5] text-[#24221F]">
       <div className="max-w-[1680px] mx-auto px-6 sm:px-10 lg:px-16">
-        {/* Section 24 Header */}
         <div className="max-w-4xl mb-16">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-[#756557] block mb-2 font-semibold">
-            24. CONTACT · GET IN TOUCH
-          </span>
           <h1 className="font-serif-editorial text-4xl sm:text-6xl text-[#24221F] mb-4">
             LET'S TRANSFORM YOUR SPACE.
           </h1>
@@ -46,10 +42,10 @@ export const ContactView: React.FC<ContactViewProps> = ({
         </div>
 
         {/* 3 Quick Contact Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          <div className="bg-[#F5F2EC] border border-[#E2DACF] rounded p-8 flex flex-col justify-between space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
+          <div className="bg-[#F5F2EC] border border-[#E2DACF] rounded p-6 sm:p-8 flex flex-col justify-between space-y-4">
             <div>
-              <h3 className="font-serif-editorial text-2xl text-[#24221F] font-semibold mb-2">
+              <h3 className="font-serif-editorial text-xl sm:text-2xl text-[#24221F] font-semibold mb-2">
                 HAVE A PROJECT IN MIND?
               </h3>
               <p className="text-xs text-[#756557] font-light">
@@ -61,15 +57,15 @@ export const ContactView: React.FC<ContactViewProps> = ({
                 setActivePage('quote');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="bg-[#24221F] text-[#FAF8F5] hover:bg-[#3D3A36] text-xs uppercase tracking-[0.2em] font-semibold py-4 px-6 rounded text-center transition-all cursor-pointer"
+              className="bg-[#24221F] text-[#FAF8F5] hover:bg-[#3D3A36] text-xs uppercase tracking-[0.2em] font-semibold py-3.5 sm:py-4 px-6 rounded text-center transition-all cursor-pointer"
             >
               GET A QUOTE
             </button>
           </div>
 
-          <div className="bg-[#F5F2EC] border border-[#E2DACF] rounded p-8 flex flex-col justify-between space-y-4">
+          <div className="bg-[#F5F2EC] border border-[#E2DACF] rounded p-6 sm:p-8 flex flex-col justify-between space-y-4">
             <div>
-              <h3 className="font-serif-editorial text-2xl text-[#24221F] font-semibold mb-2">
+              <h3 className="font-serif-editorial text-xl sm:text-2xl text-[#24221F] font-semibold mb-2">
                 NEED A QUICK RESPONSE?
               </h3>
               <p className="text-xs text-[#756557] font-light">
@@ -78,16 +74,16 @@ export const ContactView: React.FC<ContactViewProps> = ({
             </div>
             <button
               onClick={() => onWhatsAppEnquiry('Hi Interior Affairs, I need quick assistance with my project.')}
-              className="bg-[#25D366] text-[#FAF8F5] hover:bg-[#1ebd59] text-xs uppercase tracking-[0.2em] font-semibold py-4 px-6 rounded text-center transition-all cursor-pointer flex items-center justify-center gap-2"
+              className="bg-[#25D366] text-[#FAF8F5] hover:bg-[#1ebd59] text-xs uppercase tracking-[0.2em] font-semibold py-3.5 sm:py-4 px-6 rounded text-center transition-all cursor-pointer flex items-center justify-center gap-2"
             >
               <MessageSquare size={16} />
               <span>WHATSAPP US</span>
             </button>
           </div>
 
-          <div className="bg-[#F5F2EC] border border-[#E2DACF] rounded p-8 flex flex-col justify-between space-y-4">
+          <div className="bg-[#F5F2EC] border border-[#E2DACF] rounded p-6 sm:p-8 flex flex-col justify-between space-y-4">
             <div>
-              <h3 className="font-serif-editorial text-2xl text-[#24221F] font-semibold mb-2">
+              <h3 className="font-serif-editorial text-xl sm:text-2xl text-[#24221F] font-semibold mb-2">
                 WANT TO DISCUSS YOUR PROJECT?
               </h3>
               <p className="text-xs text-[#756557] font-light">
@@ -96,19 +92,16 @@ export const ContactView: React.FC<ContactViewProps> = ({
             </div>
             <button
               onClick={onOpenConsultation}
-              className="border border-[#24221F] text-[#24221F] hover:bg-[#24221F] hover:text-[#FAF8F5] text-xs uppercase tracking-[0.2em] font-semibold py-4 px-6 rounded text-center transition-all cursor-pointer"
+              className="border border-[#24221F] text-[#24221F] hover:bg-[#24221F] hover:text-[#FAF8F5] text-xs uppercase tracking-[0.2em] font-semibold py-3.5 sm:py-4 px-6 rounded text-center transition-all cursor-pointer"
             >
               TALK TO OUR TEAM
             </button>
           </div>
         </div>
 
-        {/* Section 22 SHOWROOM / OFFICE CTA Spread & Map */}
-        <div className="bg-[#F5F2EC] border border-[#E2DACF] rounded p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20 items-center">
+        {/* SHOWROOM / OFFICE CTA Spread & Map */}
+        <div className="bg-[#F5F2EC] border border-[#E2DACF] rounded p-6 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-16 sm:mb-20 items-center">
           <div className="lg:col-span-6 space-y-6">
-            <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block">
-              22. SHOWROOM / OFFICE
-            </span>
             <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F] font-semibold leading-tight">
               LET'S TAKE THIS CONVERSATION FURTHER.
             </h2>
@@ -150,7 +143,7 @@ export const ContactView: React.FC<ContactViewProps> = ({
         </div>
 
         {/* Contact Form */}
-        <div className="max-w-3xl mx-auto bg-[#F5F2EC] border border-[#E2DACF] rounded p-8 sm:p-12">
+        <div className="max-w-3xl mx-auto bg-[#F5F2EC] border border-[#E2DACF] rounded p-6 sm:p-12">
           <h2 className="font-serif-editorial text-3xl text-[#24221F] font-semibold mb-6">
             Send Us a Message
           </h2>

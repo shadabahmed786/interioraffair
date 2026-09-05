@@ -27,7 +27,7 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
 
   const handleDiscussOnWhatsApp = () => {
     const names = savedProducts.map((p) => p.name).join(', ');
-    const message = `Hi Nora Interiors, I have curated a selection of ${savedProducts.length} pieces on your website (${names}). I would like to discuss room pairing, finish options, and a tailored quote for my space.`;
+    const message = `Hi Interior Affairs, I have curated a selection of ${savedProducts.length} pieces on your website (${names}). I would like to discuss room pairing, finish options, and a tailored quote for my space.`;
     onWhatsAppEnquiry(message);
   };
 

@@ -41,7 +41,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   const handleWhatsApp = () => {
     if (!product) return;
     const finishName = product.finishes[selectedFinishIndex]?.name || 'Standard Finish';
-    const message = `Hi Nora Interiors, I am interested in "${product.name}" in the "${finishName}" finish (${product.priceFormatted}). Could you please share availability, customization options, and delivery timeline for my room?`;
+    const message = `Hi Interior Affairs, I am interested in "${product.name}" in the "${finishName}" finish (${product.priceFormatted}). Could you please share availability, customization options, and delivery timeline for my room?`;
     onWhatsAppEnquiry(message);
   };
 
@@ -74,48 +74,48 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 15 }}
             transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-            className="w-full max-w-6xl bg-[#F5F2EC] border border-[#E2DACF] shadow-2xl relative my-auto min-h-[90vh] overflow-hidden"
+            className="w-full max-w-6xl bg-[#F5F2EC] border border-[#E2DACF] shadow-2xl relative my-auto max-h-[92vh] overflow-y-auto"
           >
         {/* Sticky Close Bar */}
-        <div className="sticky top-0 z-30 bg-[#F5F2EC]/95 backdrop-blur-sm border-b border-[#E2DACF] px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#756557]">
+        <div className="sticky top-0 z-30 bg-[#F5F2EC]/95 backdrop-blur-sm border-b border-[#E2DACF] px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+          <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-[0.2em] text-[#756557]">
             <span>{product.collection}</span>
             <span>·</span>
             <span>{product.category}</span>
           </div>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 sm:space-x-3">
             <button
               onClick={handleShare}
-              className="p-2 text-[#24221F] hover:opacity-70 transition-opacity"
+              className="p-1.5 sm:p-2 text-[#24221F] hover:opacity-70 transition-opacity"
               title="Share piece"
               aria-label="Share piece"
             >
-              {copiedLink ? <Check size={18} className="text-emerald-700" /> : <Share2 size={18} strokeWidth={1.5} />}
+              {copiedLink ? <Check size={17} className="text-emerald-700" /> : <Share2 size={17} strokeWidth={1.5} />}
             </button>
             <button
               onClick={() => onToggleWishlist(product.id)}
-              className={`p-2 transition-all ${
+              className={`p-1.5 sm:p-2 transition-all ${
                 isSaved ? 'text-[#24221F]' : 'text-[#756557] hover:text-[#24221F]'
               }`}
               title={isSaved ? 'Remove from Saved' : 'Save piece'}
               aria-label="Toggle Wishlist"
             >
-              <Heart size={18} fill={isSaved ? 'currentColor' : 'none'} strokeWidth={1.5} />
+              <Heart size={17} fill={isSaved ? 'currentColor' : 'none'} strokeWidth={1.5} />
             </button>
             <button
               id="close-product-detail-btn"
               onClick={onClose}
-              className="p-2 text-[#24221F] hover:opacity-60 transition-opacity border-l border-[#E2DACF] pl-4 ml-2"
+              className="p-1.5 sm:p-2 text-[#24221F] hover:opacity-60 transition-opacity border-l border-[#E2DACF] pl-3 sm:pl-4 ml-1 sm:ml-2"
               aria-label="Close detail modal"
             >
-              <X size={22} strokeWidth={1.5} />
+              <X size={20} strokeWidth={1.5} />
             </button>
           </div>
         </div>
 
         {/* Main Content Layout */}
-        <div className="p-6 sm:p-10 lg:p-14">
+        <div className="p-4 sm:p-10 lg:p-14">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
             {/* Left: Asymmetric Gallery */}
             <div className="lg:col-span-7 space-y-6">
@@ -164,7 +164,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             <div className="lg:col-span-5 flex flex-col justify-between">
               <div>
                 <p className="text-[11px] tracking-[0.25em] uppercase text-[#756557] mb-2">
-                  {product.collection} · Nora Studio
+                  {product.collection} · Interior Affairs Studio
                 </p>
                 <h1 className="font-serif-editorial text-3xl sm:text-4xl lg:text-5xl text-[#24221F] leading-[1.1] mb-4">
                   {product.name}

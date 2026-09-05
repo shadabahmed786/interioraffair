@@ -81,13 +81,13 @@ export const BudgetPlanner: React.FC<BudgetPlannerProps> = ({
 
   const handleDiscussBudget = () => {
     const names = selectedProducts.map((p) => p.name).join(', ');
-    const msg = `Hi Nora Interiors, I used your Budget Planner for the ${currentTierObj.name} scale (${currentTierObj.limitFormatted}). I selected: ${names}. Current estimated total: PKR ${totalCalculated.toLocaleString()}. I would like to discuss fabrication and custom sizing.`;
+    const msg = `Hi Interior Affairs, I used your Budget Planner for the ${currentTierObj.name} scale (${currentTierObj.limitFormatted}). I selected: ${names}. Current estimated total: PKR ${totalCalculated.toLocaleString()}. I would like to discuss fabrication and custom sizing.`;
     onWhatsAppEnquiry(msg);
   };
 
   return (
-    <div id="budget-planner-container" className="bg-[#FAF8F5] border border-[#E2DACF] p-6 sm:p-10 lg:p-14 shadow-sm">
-      <div className="max-w-3xl mb-10">
+    <div id="budget-planner-container" className="bg-[#FAF8F5] border border-[#E2DACF] p-4 sm:p-10 lg:p-14 shadow-sm">
+      <div className="max-w-3xl mb-8 sm:mb-10">
         <p className="text-[10px] uppercase tracking-[0.25em] text-[#756557] mb-2 font-medium">
           Transparent Curation Tool
         </p>
@@ -95,7 +95,7 @@ export const BudgetPlanner: React.FC<BudgetPlannerProps> = ({
           I Have a Budget
         </h2>
         <p className="text-xs sm:text-sm text-[#756557] leading-relaxed">
-          Select your target investment threshold. Explore how Nora pieces harmoniously combine within your boundary without sacrificing architectural materiality.
+          Select your target investment threshold. Explore how Interior Affairs finishes and solutions harmoniously combine within your boundary without sacrificing architectural materiality.
         </p>
       </div>
 
@@ -108,7 +108,7 @@ export const BudgetPlanner: React.FC<BudgetPlannerProps> = ({
               key={tier.id}
               id={`budget-tier-btn-${tier.id}`}
               onClick={() => setSelectedTier(tier.id)}
-              className={`p-3.5 text-left border transition-all duration-300 relative ${
+              className={`p-3 sm:p-3.5 text-left border transition-all duration-300 relative last:col-span-2 sm:last:col-span-1 cursor-pointer ${
                 isSelected
                   ? 'border-[#24221F] bg-[#24221F] text-[#F5F2EC] shadow-md'
                   : 'border-[#E2DACF] bg-[#F5F2EC] text-[#24221F] hover:border-[#756557]'
@@ -247,7 +247,7 @@ export const BudgetPlanner: React.FC<BudgetPlannerProps> = ({
       {/* Action Footer */}
       <div className="pt-6 border-t border-[#E2DACF] flex flex-col sm:flex-row justify-between items-center gap-4">
         <p className="text-xs text-[#756557]">
-          * All Nora prices include custom upholstery selection and white-glove Islamabad delivery.
+          * All Interior Affairs prices include finish selection and white-glove nationwide coordination.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">

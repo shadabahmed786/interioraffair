@@ -200,6 +200,7 @@ export default function App() {
           <ProcessView
             setActivePage={setActivePage}
             onOpenConsultation={() => handleOpenConsultation()}
+            onWhatsAppEnquiry={handleWhatsAppEnquiry}
           />
         )}
 

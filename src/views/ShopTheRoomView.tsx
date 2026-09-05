@@ -28,7 +28,7 @@ export const ShopTheRoomView: React.FC<ShopTheRoomViewProps> = ({
 
   const handleRequestRoomWhatsApp = () => {
     const names = roomProducts.map((p) => p.name).join(', ');
-    const msg = `Hi Nora Interiors, I am interested in the complete "${currentRoom.name}" curated space package (${currentRoom.estimatedTotalFormatted}). Selected pieces: ${names}. Can we discuss layout planning and fabrication timeline?`;
+    const msg = `Hi Interior Affairs, I am interested in the complete "${currentRoom.name}" curated space package (${currentRoom.estimatedTotalFormatted}). Selected pieces: ${names}. Can we discuss layout planning and fabrication timeline?`;
     onWhatsAppEnquiry(msg);
   };
 
@@ -129,7 +129,7 @@ export const ShopTheRoomView: React.FC<ShopTheRoomViewProps> = ({
                 beforeImage={currentRoom.beforeImage}
                 afterImage={currentRoom.afterImage}
                 beforeLabel="ORIGINAL RAW RESIDENCE"
-                afterLabel={`NORA INTERIORS · ${currentRoom.name.toUpperCase()}`}
+                afterLabel={`INTERIOR AFFAIRS · ${currentRoom.name.toUpperCase()}`}
                 className="aspect-[4/3] md:aspect-[16/9] w-full"
               />
               <p className="text-center text-xs text-[#756557] mt-4">

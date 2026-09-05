@@ -87,7 +87,7 @@ export const SERVICES_LIST: ServiceDetail[] = [
     headline: 'LOOK UP. SEE THE DIFFERENCE.',
     description: 'Cove lighting, layered gypsum profiles, and clean minimal ceilings that hide wiring and AC ducting while finishing the room properly.',
     ctaText: 'Explore Ceilings →',
-    image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=1200&auto=format&fit=crop',
     badge: 'Architectural Ceiling Design',
     features: ['Seamless Gyproc Gypsum Profiles', 'Concealed LED Cove & Magnetic Tracks', 'Integrated HVAC & Speaker Outlets', 'Layered Baffle & Acoustic Wooden Strips']
   },
@@ -97,7 +97,7 @@ export const SERVICES_LIST: ServiceDetail[] = [
     headline: 'DETAILS THAT MAKE A STATEMENT.',
     description: 'Brass and gold-finish inlay strips used sparingly, along wall panels, ceiling lines, or joinery edges, to add definition without overdoing it.',
     ctaText: 'Explore Golden Finishes →',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?q=80&w=1200&auto=format&fit=crop',
     badge: 'Metallic Inlay Details',
     features: ['Electroplated Stainless Steel T-Profiles', 'Brushed Antique Brass Inlays', 'Wall Panel & Tile Joint Transitions', 'Subtle Architectural Edge Definition']
   }

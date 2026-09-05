@@ -88,8 +88,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           />
         )}
 
-        {/* Main Navbar Container with Mobile Responsive Padding */}
-        <div className="max-w-[1680px] w-full mx-auto px-2.5 sm:px-6 lg:px-12 py-1.5 min-h-[68px] sm:min-h-[84px] lg:min-h-[92px] flex items-center justify-between gap-1.5 sm:gap-4 overflow-visible">
+        {/* Main Navbar Container with Responsive Proportional Padding */}
+        <div className="max-w-[1680px] w-full mx-auto px-2 sm:px-4 lg:px-4 xl:px-8 2xl:px-12 py-1 sm:py-1.5 min-h-[56px] sm:min-h-[72px] lg:min-h-[80px] xl:min-h-[88px] flex items-center justify-between gap-1 sm:gap-2 xl:gap-4 overflow-visible">
           {/* Mobile Left Menu Trigger */}
           <div className="flex items-center lg:hidden shrink-0">
             <button
@@ -98,7 +98,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className={`p-1.5 sm:p-2 -ml-1 rounded-lg transition-all duration-300 ${textColor} hover:bg-black/5 active:scale-95 flex items-center gap-1 cursor-pointer`}
               aria-label="Open Navigation Menu"
             >
-              <Menu size={20} strokeWidth={1.5} className="sm:w-[22px] sm:h-[22px]" />
+              <Menu size={19} strokeWidth={1.5} className="sm:w-[22px] sm:h-[22px]" />
               <span className="text-[10px] uppercase tracking-[0.18em] font-medium hidden sm:inline">Menu</span>
             </button>
           </div>
@@ -123,7 +123,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
+          <nav className="hidden lg:flex items-center space-x-0.5 xl:space-x-1.5 2xl:space-x-2">
             {navLinks.map((link) => {
               const isActive = activePage === link.page || 
                 (link.page === 'our-work' && activePage === 'projects') ||
@@ -137,7 +137,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     setActivePage(link.page);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className={`text-[12px] xl:text-[13px] tracking-[0.16em] uppercase transition-all duration-300 relative px-3.5 py-2 rounded-md font-medium cursor-pointer ${
+                  className={`text-[11px] xl:text-[12px] 2xl:text-[13px] tracking-[0.08em] xl:tracking-[0.14em] 2xl:tracking-[0.16em] uppercase transition-all duration-300 relative px-2 xl:px-3 2xl:px-3.5 py-1.5 xl:py-2 rounded-md font-medium cursor-pointer whitespace-nowrap ${
                     isActive
                       ? isTransparentOverHero
                         ? 'text-[#FAF8F5] bg-white/10 font-semibold'
@@ -163,12 +163,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Right Controls & Fully Visible Mobile-Optimized Primary CTA */}
-          <div className="flex items-center space-x-1.5 sm:space-x-3 shrink-0">
+          <div className="flex items-center space-x-1 sm:space-x-2 xl:space-x-2.5 shrink-0">
             {/* Search Button */}
             <button
               id="header-search-btn"
               onClick={onOpenSearch}
-              className={`p-2 sm:p-2.5 rounded-full border transition-all duration-300 flex items-center justify-center cursor-pointer ${
+              className={`p-1.5 sm:p-2 xl:p-2.5 rounded-full border transition-all duration-300 flex items-center justify-center cursor-pointer ${
                 isTransparentOverHero
                   ? 'border-[#FAF8F5]/30 bg-black/20 text-[#FAF8F5] hover:bg-black/40'
                   : 'border-[#E2DACF] bg-[#FAF8F5]/80 text-[#24221F] hover:bg-[#E7E1D8]'
@@ -176,26 +176,26 @@ export const Navbar: React.FC<NavbarProps> = ({
               aria-label="Search"
               title="Search Services & Spaces"
             >
-              <Search size={15} strokeWidth={1.75} className="sm:w-4 sm:h-4" />
+              <Search size={14} strokeWidth={1.75} className="sm:w-4 sm:h-4" />
             </button>
 
             {/* Wishlist Button */}
             <button
               id="header-wishlist-btn"
               onClick={onOpenWishlist}
-              className={`p-2 sm:p-2.5 rounded-full relative transition-all duration-300 cursor-pointer ${textColor} ${
+              className={`p-1.5 sm:p-2 xl:p-2.5 rounded-full relative transition-all duration-300 cursor-pointer ${textColor} ${
                 isTransparentOverHero ? 'hover:bg-white/10' : 'hover:bg-[#24221F]/5'
               }`}
               aria-label="View Saved Pieces"
               title="Saved Items"
             >
-              <Heart size={16} strokeWidth={1.75} className="sm:w-[18px] sm:h-[18px]" />
+              <Heart size={15} strokeWidth={1.75} className="sm:w-[18px] sm:h-[18px]" />
               {wishlistCount > 0 && (
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   key={wishlistCount}
-                  className="absolute top-0.5 right-0.5 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-[#C81E2B] text-[#FAF8F5] text-[8px] sm:text-[9px] font-semibold flex items-center justify-center shadow-md border border-[#FAF8F5]/30"
+                  className="absolute top-0 right-0 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-[#C81E2B] text-[#FAF8F5] text-[8px] sm:text-[9px] font-semibold flex items-center justify-center shadow-md border border-[#FAF8F5]/30"
                 >
                   {wishlistCount}
                 </motion.span>
@@ -206,7 +206,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               id="header-get-quote-btn"
               onClick={handleQuoteAction}
-              className={`inline-flex items-center gap-1 sm:gap-2 text-[10px] sm:text-[11px] xl:text-[12px] uppercase tracking-[0.1em] sm:tracking-[0.2em] font-semibold px-2.5 sm:px-5 py-1.5 sm:py-2.5 rounded-md transition-all duration-300 shadow-md cursor-pointer group shrink-0 whitespace-nowrap ${
+              className={`inline-flex items-center gap-1 sm:gap-1.5 xl:gap-2 text-[9px] sm:text-[10px] xl:text-[11px] 2xl:text-[12px] uppercase tracking-[0.08em] sm:tracking-[0.14em] xl:tracking-[0.2em] font-semibold px-2.5 sm:px-3.5 xl:px-5 py-1.5 sm:py-2 xl:py-2.5 rounded-md transition-all duration-300 shadow-md cursor-pointer group shrink-0 whitespace-nowrap ${
                 isTransparentOverHero
                   ? 'bg-[#FAF8F5] text-[#24221F] hover:bg-[#E7E1D8] hover:shadow-lg'
                   : 'bg-[#24221F] text-[#FAF8F5] hover:bg-[#3D3A36] hover:shadow-md'
@@ -214,8 +214,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <span>GET A QUOTE</span>
               <ArrowRight
-                size={13}
-                className="transition-transform duration-300 group-hover:translate-x-1 shrink-0"
+                size={12}
+                className="transition-transform duration-300 group-hover:translate-x-1 shrink-0 hidden xs:inline"
               />
             </button>
           </div>
@@ -231,7 +231,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="fixed inset-0 z-50 bg-[#F5F2EC] flex flex-col justify-between p-6 sm:p-10 overflow-y-auto"
+            className="fixed inset-0 z-50 bg-[#F5F2EC] flex flex-col justify-between p-5 sm:p-10 overflow-y-auto max-h-screen"
           >
             {/* Mobile Header with Official Logo */}
             <div className="flex justify-between items-center pb-5 border-b border-[#E2DACF]">

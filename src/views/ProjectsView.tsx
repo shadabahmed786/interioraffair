@@ -19,11 +19,8 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
   return (
     <div id="projects-page" className="py-16 sm:py-24 bg-[#FAF8F5] text-[#24221F]">
       <div className="max-w-[1680px] mx-auto px-6 sm:px-10 lg:px-16">
-        {/* Section 11 Header */}
+        {/* Header */}
         <div className="max-w-4xl mb-16">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-[#756557] block mb-2 font-semibold">
-            11. OUR WORK · SPACES WE'VE TRANSFORMED
-          </span>
           <h1 className="font-serif-editorial text-4xl sm:text-6xl text-[#24221F] mb-4">
             SPACES WE'VE TRANSFORMED.
           </h1>
@@ -72,13 +69,10 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
           })}
         </div>
 
-        {/* Section 12 PROJECT DETAIL INTRO Display */}
+        {/* PROJECT DETAIL INTRO Display */}
         {selectedProject && (
           <div id="project-detail-section" className="bg-[#F5F2EC] border border-[#E2DACF] rounded p-8 sm:p-12">
             <div className="max-w-4xl mb-8">
-              <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block mb-2">
-                12. PROJECT DETAIL INTRO
-              </span>
               <h2 className="font-serif-editorial text-3xl sm:text-5xl text-[#24221F] mb-4">
                 A SPACE, REIMAGINED.
               </h2>

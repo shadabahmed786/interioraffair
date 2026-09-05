@@ -19,7 +19,7 @@ export const CustomFurnitureView: React.FC<CustomFurnitureViewProps> = ({
   });
 
   const handleCustomWhatsApp = () => {
-    const msg = `Hi Nora Atelier, I would like to request a bespoke furniture commission for: ${customForm.pieceType}. Desired materials: ${customForm.materials}. Dimensions: ${customForm.dimensions || 'To be measured'}. Details: ${customForm.notes || 'Please connect me with a furniture architect.'}`;
+    const msg = `Hi Interior Affairs, I would like to request a bespoke custom piece for: ${customForm.pieceType}. Desired materials: ${customForm.materials}. Dimensions: ${customForm.dimensions || 'To be measured'}. Details: ${customForm.notes || 'Please connect me with a design consultant.'}`;
     onWhatsAppEnquiry(msg);
   };
 
@@ -29,7 +29,7 @@ export const CustomFurnitureView: React.FC<CustomFurnitureViewProps> = ({
         {/* Hero Section */}
         <div className="max-w-3xl mb-16 sm:mb-20">
           <span className="text-[10px] tracking-[0.3em] uppercase text-[#756557] block mb-2 font-medium">
-            The Nora Atelier · Islamabad
+            Interior Affairs Atelier · Pakistan
           </span>
           <h1 className="font-serif-editorial text-4xl sm:text-5xl lg:text-6xl text-[#24221F] mb-4">
             Custom Furniture Craftsmanship
@@ -87,45 +87,34 @@ export const CustomFurnitureView: React.FC<CustomFurnitureViewProps> = ({
             {CUSTOM_FURNITURE_STEPS.map((step) => (
               <div
                 key={step.number}
-                className="bg-[#FAF8F5] border border-[#E2DACF] p-8 flex flex-col justify-between"
+                className="bg-[#FAF8F5] border border-[#E2DACF] p-5 sm:p-8 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex justify-between items-baseline mb-4">
-                    <span className="font-serif-editorial text-4xl text-[#24221F]">
+                    <span className="font-serif-editorial text-3xl sm:text-4xl text-[#24221F]">
                       {step.number}
                     </span>
                     <span className="text-[10px] uppercase tracking-widest text-[#756557]">
-                      Nora Atelier
+                      Interior Affairs Atelier
                     </span>
                   </div>
-                  <h3 className="font-serif-editorial text-xl text-[#24221F] mb-1">
+                  <h3 className="font-serif-editorial text-xl text-[#24221F] mb-1 font-semibold">
                     {step.title}
                   </h3>
                   <p className="text-[11px] uppercase tracking-wider text-[#756557] font-semibold mb-3">
                     {step.tagline}
                   </p>
-                  <p className="text-xs text-[#756557] leading-relaxed">
+                  <p className="text-xs text-[#756557] leading-relaxed font-light">
                     {step.description}
                   </p>
                 </div>
-
-                {step.image && (
-                  <div className="aspect-[16/9] bg-[#E7E1D8] overflow-hidden mt-6 border border-[#E2DACF]">
-                    <img
-                      src={step.image}
-                      alt={step.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                )}
               </div>
             ))}
           </div>
         </div>
 
         {/* Custom Commission Inquiry Form */}
-        <div className="bg-[#24221F] text-[#F5F2EC] p-8 sm:p-14 lg:p-20 border border-[#3B3835]">
+        <div className="bg-[#24221F] text-[#F5F2EC] p-6 sm:p-14 lg:p-20 border border-[#3B3835]">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-10">
               <span className="text-[10px] uppercase tracking-[0.3em] text-[#D5C8B8] block mb-2 font-medium">

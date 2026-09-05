@@ -101,13 +101,13 @@ export const DesignWizard: React.FC<DesignWizardProps> = ({
       {/* Header Banner */}
       <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
         <p className="text-[11px] tracking-[0.25em] uppercase text-[#756557] mb-3 font-medium">
-          The Nora Interactive Studio
+          The Interior Affairs Interactive Studio
         </p>
         <h1 className="font-serif-editorial text-4xl sm:text-5xl lg:text-6xl text-[#24221F] leading-tight mb-4">
           Curate Your Environment.
         </h1>
         <p className="font-sans text-sm sm:text-base text-[#756557] leading-relaxed max-w-2xl mx-auto">
-          Don&apos;t shop for standalone furniture. Tell us how you want your space to feel, upload your room, and let Nora compose a tailored architectural sanctuary.
+          Don&apos;t settle for disconnected contractors. Tell us how you want your space to feel, upload your room, and let Interior Affairs compose a tailored architectural sanctuary.
         </p>
       </div>
 
@@ -141,22 +141,22 @@ export const DesignWizard: React.FC<DesignWizardProps> = ({
 
       {/* WIZARD FLOW STEPS */}
       {!isProcessing && !showResult && (
-        <div className="max-w-5xl mx-auto bg-[#FAF8F5] border border-[#E2DACF] p-6 sm:p-10 lg:p-14 shadow-sm">
+        <div className="max-w-5xl mx-auto bg-[#FAF8F5] border border-[#E2DACF] p-4 sm:p-10 lg:p-14 shadow-sm">
           {/* Step Indicators */}
-          <div className="grid grid-cols-4 gap-2 sm:gap-4 mb-10 sm:mb-14 border-b border-[#E2DACF] pb-6">
+          <div className="grid grid-cols-4 gap-1.5 sm:gap-4 mb-8 sm:mb-14 border-b border-[#E2DACF] pb-4 sm:pb-6">
             {[
-              { num: 1, title: '01. Space' },
-              { num: 2, title: '02. Mood' },
-              { num: 3, title: '03. Scale' },
-              { num: 4, title: '04. Room' },
+              { num: 1, title: 'Space' },
+              { num: 2, title: 'Mood' },
+              { num: 3, title: 'Scale' },
+              { num: 4, title: 'Room' },
             ].map((step) => {
               const isCurrent = currentStep === step.num;
               const isCompleted = currentStep > step.num;
               return (
                 <div key={step.num} className="flex flex-col">
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-1.5 sm:gap-2 mb-2">
                     <span
-                      className={`w-2 h-2 rounded-full transition-all ${
+                      className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all shrink-0 ${
                         isCurrent
                           ? 'bg-[#24221F] ring-2 ring-[#24221F]/30'
                           : isCompleted
@@ -165,7 +165,7 @@ export const DesignWizard: React.FC<DesignWizardProps> = ({
                       }`}
                     />
                     <span
-                      className={`text-[10px] sm:text-xs uppercase tracking-[0.16em] font-medium truncate ${
+                      className={`text-[8px] xs:text-[10px] sm:text-xs uppercase tracking-[0.08em] sm:tracking-[0.16em] font-medium truncate ${
                         isCurrent ? 'text-[#24221F]' : 'text-[#756557]'
                       }`}
                     >
@@ -282,7 +282,7 @@ export const DesignWizard: React.FC<DesignWizardProps> = ({
                               isSelected ? 'text-[#D5C8B8]' : 'text-[#756557]'
                             }`}
                           >
-                            Nora Mood
+                            Interior Affairs Mood
                           </span>
                           {isSelected && <CheckCircle size={14} className="text-[#D5C8B8]" />}
                         </div>
@@ -489,10 +489,10 @@ export const DesignWizard: React.FC<DesignWizardProps> = ({
           {/* Presentation Header */}
           <div className="text-center max-w-3xl mx-auto border-b border-[#E2DACF] pb-10">
             <span className="text-[10px] tracking-[0.3em] uppercase text-[#756557] block mb-2 font-medium">
-              Concept Presentation · Nora Studio Islamabad
+              Concept Presentation · Interior Affairs Studio
             </span>
             <h2 className="font-serif-editorial text-4xl sm:text-5xl text-[#24221F] mb-4">
-              Your Nora Space Concept
+              Your Interior Affairs Space Concept
             </h2>
             <p className="font-sans text-sm sm:text-base text-[#756557] leading-relaxed">
               Tailored for your {selectedSpace.toUpperCase()} area, curated for a{' '}
@@ -506,7 +506,7 @@ export const DesignWizard: React.FC<DesignWizardProps> = ({
           <div className="relative aspect-[16/9] w-full bg-[#E7E1D8] overflow-hidden border border-[#E2DACF]">
             <img
               src={matchingRoom.heroImage}
-              alt="Your Nora Space Visualization"
+              alt="Your Interior Affairs Space Visualization"
               className="w-full h-full object-cover"
             />
             <div className="absolute bottom-4 right-4 bg-[#24221F]/90 backdrop-blur-sm text-[#FAF8F5] text-[10px] uppercase tracking-[0.2em] px-4 py-2 flex items-center gap-2">
@@ -644,7 +644,7 @@ export const DesignWizard: React.FC<DesignWizardProps> = ({
                 id="result-whatsapp-btn"
                 onClick={() => {
                   const names = curatedProducts.map((p) => p.name).join(', ');
-                  const text = `Hi Nora Interiors, I just generated my ${selectedSpace.toUpperCase()} concept in ${selectedMood.toUpperCase()} mood on your website (${names}). Total: ${formattedTotal}. I'd like to consult with an architect.`;
+                  const text = `Hi Interior Affairs, I just generated my ${selectedSpace.toUpperCase()} concept in ${selectedMood.toUpperCase()} mood on your website (${names}). Total: ${formattedTotal}. I'd like to consult with an architect.`;
                   onWhatsAppEnquiry(text);
                 }}
                 className="border border-[#FAF8F5] text-[#FAF8F5] text-xs uppercase tracking-[0.18em] py-4 px-8 hover:bg-[#FAF8F5]/10 transition-colors flex items-center justify-center gap-2"

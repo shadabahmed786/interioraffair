@@ -16,9 +16,6 @@ export const GreyStructureView: React.FC<GreyStructureViewProps> = ({
       <div className="max-w-[1680px] mx-auto px-6 sm:px-10 lg:px-16">
         {/* Header */}
         <div className="max-w-4xl mb-16 sm:mb-20">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-[#756557] block mb-2 font-semibold">
-            18. GREY STRUCTURE SERVICE
-          </span>
           <h1 className="font-serif-editorial text-4xl sm:text-6xl text-[#24221F] mb-6">
             STARTING WITH A BLANK CANVAS?
           </h1>

@@ -111,7 +111,7 @@ export const TopBanner: React.FC<TopBannerProps> = ({
               {currentAnnouncement.icon}
               
               {/* Mobile text vs Desktop text */}
-              <span className="text-[10px] sm:text-[11px] tracking-[0.05em] font-normal text-[#E7E1D8] sm:hidden truncate max-w-[220px]">
+              <span className="text-[9px] xs:text-[10px] sm:text-[11px] tracking-[0.03em] sm:tracking-[0.05em] font-normal text-[#E7E1D8] sm:hidden truncate max-w-[170px] xs:max-w-[220px]">
                 {currentAnnouncement.mobileText}
               </span>
               <span className="text-[11px] sm:text-[12px] tracking-[0.06em] font-normal text-[#E7E1D8] hidden sm:inline">

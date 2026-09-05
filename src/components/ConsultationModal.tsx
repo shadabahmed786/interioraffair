@@ -47,7 +47,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   };
 
   const handleWhatsAppRedirect = () => {
-    const text = `Hi Nora Interiors, my name is ${formData.name || 'a visitor'}. I would like to enquire about ${formData.interestType}. Location: ${formData.city}. Notes: ${formData.message || 'Please connect me with a design consultant.'}`;
+    const text = `Hi Interior Affairs, my name is ${formData.name || 'a visitor'}. I would like to enquire about ${formData.interestType}. Location: ${formData.city}. Notes: ${formData.message || 'Please connect me with a design consultant.'}`;
     if (onWhatsAppDirect) {
       onWhatsAppDirect(text);
     } else {
@@ -63,7 +63,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
     >
       <div
         id="consultation-modal-container"
-        className="w-full max-w-2xl bg-[#F5F2EC] border border-[#E2DACF] p-6 sm:p-10 relative shadow-2xl my-auto max-h-[92vh] overflow-y-auto"
+        className="w-full max-w-2xl bg-[#F5F2EC] border border-[#E2DACF] p-5 sm:p-10 relative shadow-2xl my-auto max-h-[92vh] overflow-y-auto"
       >
         {/* Close Button */}
         <button
@@ -308,7 +308,7 @@ export const WhatsAppButton: React.FC<{
   onOpenContextualChat?: (msg?: string) => void;
 }> = ({ onOpenContextualChat }) => {
   const handleClick = () => {
-    const defaultMsg = 'Hi Nora Interiors, I am visiting your digital studio and would like to speak with an interior design consultant.';
+    const defaultMsg = 'Hi Interior Affairs, I am visiting your digital studio and would like to speak with an interior design consultant.';
     if (onOpenContextualChat) {
       onOpenContextualChat(defaultMsg);
     } else {
@@ -318,12 +318,12 @@ export const WhatsAppButton: React.FC<{
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-40">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40">
       <button
         id="floating-whatsapp-btn"
         onClick={handleClick}
-        className="group bg-[#24221F] text-[#F5F2EC] hover:bg-[#34322F] p-3.5 sm:px-5 sm:py-3 shadow-xl flex items-center gap-2.5 transition-all duration-300 border border-[#D5C8B8]/40 hover:scale-[1.02]"
-        aria-label="Contact Nora Interiors on WhatsApp"
+        className="group bg-[#24221F] text-[#F5F2EC] hover:bg-[#34322F] p-3 sm:px-5 sm:py-3 shadow-xl flex items-center gap-2 sm:gap-2.5 transition-all duration-300 border border-[#D5C8B8]/40 hover:scale-[1.02] cursor-pointer"
+        aria-label="Contact Interior Affairs on WhatsApp"
         title="WhatsApp Consultation"
       >
         <MessageCircle size={18} className="text-[#D5C8B8]" />

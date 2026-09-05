@@ -19,9 +19,6 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
       <div className="max-w-[1680px] mx-auto px-6 sm:px-10 lg:px-16">
         {/* Section Header */}
         <div className="max-w-4xl mb-16 sm:mb-20">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-[#756557] block mb-2 font-semibold">
-            5. SERVICES · COMPLETE INTERIOR SOLUTIONS
-          </span>
           <h1 className="font-serif-editorial text-4xl sm:text-6xl text-[#24221F] mb-4">
             EVERYTHING YOUR SPACE NEEDS. UNDER ONE ROOF.
           </h1>

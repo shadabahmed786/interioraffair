@@ -14,11 +14,7 @@ export const AboutView: React.FC<AboutViewProps> = ({
   return (
     <div id="about-page" className="py-16 sm:py-24 bg-[#FAF8F5] text-[#24221F]">
       <div className="max-w-[1680px] mx-auto px-6 sm:px-10 lg:px-16">
-        {/* Section 16 Header */}
         <div className="max-w-4xl mb-16 sm:mb-20">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-[#756557] block mb-2 font-semibold">
-            16. ABOUT · OUR STORY
-          </span>
           <h1 className="font-serif-editorial text-4xl sm:text-6xl text-[#24221F] mb-6">
             BUILT AROUND BETTER SPACES.
           </h1>
@@ -80,11 +76,8 @@ export const AboutView: React.FC<AboutViewProps> = ({
           </div>
         </div>
 
-        {/* Section 14 CRAFTSMANSHIP */}
+        {/* CRAFTSMANSHIP */}
         <div className="mb-20">
-          <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block mb-2">
-            14. CRAFTSMANSHIP
-          </span>
           <h2 className="font-serif-editorial text-3xl sm:text-4xl text-[#24221F] mb-6">
             THE DIFFERENCE IS IN THE DETAILS.
           </h2>
@@ -112,11 +105,8 @@ export const AboutView: React.FC<AboutViewProps> = ({
           </p>
         </div>
 
-        {/* Section 15 WHY INTERIOR AFFAIRS */}
+        {/* WHY INTERIOR AFFAIRS */}
         <div className="mb-20">
-          <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block mb-2">
-            15. WHY INTERIOR AFFAIRS
-          </span>
           <h2 className="font-serif-editorial text-3xl sm:text-4xl text-[#24221F] mb-8">
             MORE THAN FINISHING. A COMPLETE APPROACH.
           </h2>

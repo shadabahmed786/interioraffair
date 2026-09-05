@@ -68,16 +68,12 @@ export const QuoteView: React.FC<QuoteViewProps> = ({
   return (
     <div id="quote-page" className="py-16 sm:py-24 bg-[#FAF8F5] text-[#24221F]">
       <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
-        {/* If Submitted: SECTION 21 QUOTE SUCCESS MESSAGE */}
+        {/* If Submitted: SUCCESS MESSAGE */}
         {submitted ? (
           <div className="bg-[#F5F2EC] border border-[#E2DACF] rounded p-8 sm:p-16 text-center max-w-3xl mx-auto space-y-6">
             <div className="w-16 h-16 rounded-full bg-[#24221F] text-[#FAF8F5] flex items-center justify-center mx-auto">
               <CheckCircle2 size={32} />
             </div>
-
-            <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-[#756557] block">
-              21. QUOTE SUCCESS MESSAGE
-            </span>
 
             <h1 className="font-serif-editorial text-4xl sm:text-5xl text-[#24221F] font-semibold">
               YOUR PROJECT STARTS HERE.
@@ -108,12 +104,8 @@ export const QuoteView: React.FC<QuoteViewProps> = ({
             </div>
           </div>
         ) : (
-          /* SECTION 20 QUOTE PAGE */
           <div>
             <div className="max-w-3xl mb-12">
-              <span className="text-[10px] tracking-[0.3em] uppercase text-[#756557] block mb-2 font-semibold">
-                20. QUOTE PAGE
-              </span>
               <h1 className="font-serif-editorial text-4xl sm:text-6xl text-[#24221F] mb-3">
                 TELL US ABOUT YOUR SPACE.
               </h1>
